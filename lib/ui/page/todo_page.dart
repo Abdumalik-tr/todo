@@ -69,11 +69,12 @@ class _TodoPageState extends State<TodoPage> {
               child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  //   TextField(
-
-                  // ), 
+                    Expanded(
+                      child: TextField(
+                      
+                                        ),
+                    ), 
                   Icon(Icons.search)],
                 ),
               ),
