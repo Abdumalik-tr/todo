@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/model/todo_model.dart';
-import 'package:todo/ui/widget/Color.dart';
+import 'package:todo/ui/widget/color.dart';
 
 class TodoCard extends StatefulWidget {
   const TodoCard({super.key, required this.todoModel});
@@ -44,18 +44,29 @@ class _TodoCardState extends State<TodoCard> {
                 ),
               ),
               Checkbox(
+                checkColor: AppColor.blue,
+                activeColor: Colors.white,
                 value: widget.todoModel.done,
                 onChanged: (_) {
                   setState(() {
                     widget.todoModel.done = !widget.todoModel.done;
                   });
                 },
+                side: BorderSide(color: Colors.white, width: 2),
               ),
-              Icon(Icons.delete, color: Colors.white),
+              InkWell(
+                onTap: () {
+                  ////
+                },
+                child: Icon(Icons.delete, color: Colors.white),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ImageIcon(AssetImage('assets/Union-2.png',), color: Colors.white),
-              )
+                child: ImageIcon(
+                  AssetImage('assets/Union-2.png'),
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
           Padding(

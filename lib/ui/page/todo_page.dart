@@ -12,50 +12,7 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  //TextEditingController titleController = TextEditingController();
-  //TextEditingController descController = TextEditingController();
-  List<TodoModel> todos = [
-    TodoModel(
-      title: 'По завтракать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: true,
-    ),
-    TodoModel(
-      title: 'Идти на работу',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: true,
-    ),
-    TodoModel(
-      title: 'По обедать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: false,
-    ),
-    TodoModel(
-      title: 'По обедать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: false,
-    ),
-    TodoModel(
-      title: 'По завтракать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: true,
-    ),
-    TodoModel(
-      title: 'Идти на работу',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: true,
-    ),
-    TodoModel(
-      title: 'По обедать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: false,
-    ),
-    TodoModel(
-      title: 'По обедать',
-      description: 'Сегодня хочу рано встать, меня ждут великие дела',
-      done: false,
-    ),
-  ];
+  List<TodoModel> todos = [];
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +30,10 @@ class _TodoPageState extends State<TodoPage> {
                 children: [
                   Expanded(
                     child: TextField(
-                      decoration: InputDecoration(border: InputBorder.none),
+                      decoration: InputDecoration(
+                        hintText: ('поиск'),
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                   Icon(Icons.search),
@@ -93,7 +53,14 @@ class _TodoPageState extends State<TodoPage> {
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          TodoBottomSheet(context);
+          TodoBottomSheet(
+            context: context,
+            add: (todo) {
+              setState(() {
+                todos.add(todo);
+              });
+            },
+          );
         },
         child: Container(
           padding: EdgeInsets.all(18),
